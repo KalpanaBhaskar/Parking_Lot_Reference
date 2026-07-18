@@ -76,11 +76,6 @@ class Ticket(SQLModel,table = True):
               unique = True,   # rule
               postgresql_where="is_closed = false" # condition filter
             ),  # ADDED: trailing comma makes this a proper Python tuple
-                # WHY? In Python, (x) is just parentheses (grouping).
-                # (x,) is a one-element tuple. SQLAlchemy's __table_args__
-                # expects a TUPLE, not a bare value. Without this comma,
-                # Python sees: __table_args__ = Index(...)  (just the Index object)
-                # With the comma: __table_args__ = (Index(...),)  (a tuple containing the Index)
     )
 
     @field_validator("license_plate")  # pydantic decorator
@@ -151,8 +146,6 @@ def checkout_vehicle(session: Session, slot_id: int):
         print(f"No active vehicle found parked in Slot {slot_id}.")
 
 """
-
-
 # ──────────────────────────────────────────────────────────────
 # ADDED: Reservation Model (Bonus Feature)
 # ──────────────────────────────────────────────────────────────

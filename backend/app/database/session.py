@@ -3,7 +3,7 @@ from typing import Annotated
 from fastapi import Depends
 
 # Format: postgresql://<username>:<password>@<host>:<port>/<database_name>
-DATABASE_URL = "postgresql://postgres:H@num@n999@localhost:5432/parking_lot_db"
+DATABASE_URL = "postgresql://postgres:mypassword@localhost:5432/parking_lot_db"
 
 engine = create_engine(DATABASE_URL, echo=True)
 
